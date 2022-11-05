@@ -12,16 +12,21 @@ public class Postos {
   }
 
   public boolean cadastraUsina(Revenda revenda) {
-		revendas.add(revenda);
-		return true;
-}
+    revendas.add(revenda);
+    return true;
+  }
 
-public Revenda pesquisaRevenda(String nome) {
-  for(Revenda revenda : revendas) {
-      if(revenda.getNomePosto().equals(nome)){
+  public Revenda pesquisaRevenda(String nome) {
+    for (Revenda revenda : revendas) {
+      if (revenda.getNomePosto().equals(nome)) {
         return revenda;
       }
     }
-  return null;
-}
+    return null;
+  }
+
+  public ArrayList<Revenda> listaDados() {
+    if (revendas == null) return null;
+    return (ArrayList<Revenda>) revendas.clone();
+  }
 }
