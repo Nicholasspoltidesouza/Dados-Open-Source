@@ -29,4 +29,11 @@ public class Postos {
     if (revendas == null) return null;
     return (ArrayList<Revenda>) revendas.clone();
   }
+
+  public Revenda pesquisaPorParteNome(String nomePosto){
+    for (Revenda revenda : revendas) {
+      if (revenda.getNomePosto().contains(nomePosto)) return revenda;
+  }
+  return null;
+}
 }
