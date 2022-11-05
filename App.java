@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -133,44 +137,51 @@ public class ACMEEnergy {
     }
   }
 
-  public void cadastraArquivo() {
+  public String leArquivo() {
+    System.out.println("Informe o diretorio do arquivo:");
+    in.nextLine();
+    String path = in.nextLine();
+    String line = " ";
+    String regiao; 
+    String estado; 
+    String nomeMunicipio; 
+    String nomePosto; 
+    String cnpj; 
+    String rua;
+    String numeroRua; 
+    String complemento; 
+    String bairro; 
+    String cep; 
+    String produto; 
+    String valorVenda;
+    String valorCompra; 
+    String medida; 
+    String bandeira;
     try {
-      System.out.println("Quantas usinas serao cadastradas?");
-      int num = in.nextInt();
-      System.out.println("Informe o nome do arquivo:");
-      in.nextLine();
-      String nomeArquivo = in.nextLine();
-      String[] linhas = conglomerado.leArquivo(nomeArquivo, num);
-      String nome;
-      String producaoMWh;
-      String custoMWh;
-      String tipo;
-      String fonteDeEnergia;
-      String combustivel;
-      String durabilidade;
-      for (int i = 0; i < linhas.length; i++) {
-        tipo = linhas[i].split(";")[0];
-        nome = linhas[i].split(";")[1];
-        producaoMWh = linhas[i].split(";")[2];
-        double pMWh = Double.parseDouble(producaoMWh);
-        custoMWh = linhas[i].split(";")[3];
-        double cMWh = Double.parseDouble(custoMWh);
-        if (tipo.equals("1")) {
-          fonteDeEnergia = linhas[i].split(";")[4];
-          Usina usina = new UsinaRenovavel(nome, pMWh, cMWh, fonteDeEnergia);
-          conglomerado.cadastraUsina(usina);
-        }
-        if (tipo.equals("2")) {
-          combustivel = linhas[i].split(";")[4];
-          durabilidade = linhas[i].split(";")[5];
-          int dura = Integer.parseInt(durabilidade);
-          Usina usina = new UsinaNaoRenovavel(nome, pMWh, cMWh, combustivel, dura);
-          conglomerado.cadastraUsina(usina);
-        }
+      BufferedReader br = new BufferedReader(new FileReader(path));
+      while ((line = br.readLine()) != null) {
+        String[] linhas = line.split(";");
+        regiao = linhas[0];
+        estado = linhas[1];
+        nomeMunicipio = linhas[2];
+        nomePosto = linhas[3];
+        cnpj = linhas[4];
+        rua = linhas[5];
+        numeroRua = linhas[6];
+        int numeroDaRua = Integer.parseInt(numeroRua);
+        complemento = linhas[7];
+        bairro = linhas[8];
+        cep = linhas[9];
+        produto = linhas[10];
+        valorVenda = linhas[11];
+        valorCompra = linhas[12];
+        medida = linhas[13];
+        bandeira = linhas[14];
       }
-    } catch (InputMismatchException ex) {
-      in.nextLine();
-      System.err.println("Erro: entrada de dados incorreta.");
+    } catch (FileNotFoundException e) {
+      System.out.println(e);
+    } catch (IOException e) {
+      System.out.println(e);
     }
   }
 }
