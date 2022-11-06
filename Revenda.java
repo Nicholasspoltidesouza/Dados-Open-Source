@@ -16,7 +16,7 @@ public class Revenda {
   private String bandeira;
 
   public Revenda(String regiao, String estado, String nomeMunicipio, String nomePosto, String cnpj, String rua,
-      int numeroDaRua, String complemento, String bairro, String cep, String produto, String valorVenda,
+      String numeroRua, String complemento, String bairro, String cep, String produto, String valorVenda,
       String valorCompra, String medida, String bandeira) {
     this.regiao = regiao;
     this.estado = estado;

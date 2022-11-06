@@ -11,7 +11,7 @@ public class Postos {
     revendas = new ArrayList<>();
   }
 
-  public boolean cadastraUsina(Revenda revenda) {
+  public boolean cadastraPosto(Revenda revenda) {
     revendas.add(revenda);
     return true;
   }
@@ -35,5 +35,5 @@ public class Postos {
       if (revenda.getNomePosto().contains(nomePosto)) return revenda;
   }
   return null;
-}
+  }
 }
