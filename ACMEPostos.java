@@ -16,6 +16,7 @@ public class ACMEPostos {
   private Scanner in;
 
   public void inicializa() {
+    posto = new Postos();
     in = new Scanner(System.in);
 
   }
@@ -30,7 +31,7 @@ public class ACMEPostos {
         System.out.println("1 - Cadastrar arquivo");
         System.out.println("2 - Pesquisar por nome");
         System.out.println("3 - Listar todos os dados");
-        System.out.println("4 - Classificar por nome (ordem crescente/decrescente");
+        System.out.println("4 - Classificar por nome (ordem crescente/decrescente)");
         System.out.println("5 - Salvar dados em arquivo");
         System.out.println("Opção escolhida: ");
         opcao = in.nextInt();
@@ -86,39 +87,18 @@ public class ACMEPostos {
 
   private void listaRevendas() {
     try {
-      System.out.println("Lista de usinas:");
+      System.out.println("Lista de postos:");
       ArrayList<Revenda> revenda = posto.listaDados();
       for (Revenda revendas : revenda) {
         System.out.println(revendas.toString());
       }
       if (revenda == null)
-        System.out.println("Nenhum posto cadastrada");
+        System.out.println("Nenhum posto cadastrado");
     } catch (InputMismatchException ex) {
       in.nextLine();
       System.err.println("Erro: entrada de dados incorreta.");
     }
   }
-
-  /*
-   * private void consultaPreco() {
-   * 
-   * }
-   */
-
-  /*
-   * private void salvaArquivo() {
-   * try {
-   * System.out.println("Informe o nome do arquivo em que os dados serao salvos:"
-   * );
-   * in.nextLine();
-   * String nomeArquivo = in.nextLine();
-   * conglomerado.salvaDadosArquivo(nomeArquivo);
-   * } catch (InputMismatchException ex) {
-   * in.nextLine();
-   * System.err.println("Erro: entrada de dados incorreta.");
-   * }
-   * }
-   */
 
   public void cadastraArquivo() {
     System.out.println("Informe o diiretorio do arquivo:");
@@ -131,47 +111,41 @@ public class ACMEPostos {
     Path path = Paths.get(nomeArquivo);
     try {
       BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset());
-      String line = null;
+      String line = " ";
+      String regiao;
+      String estado;
+      String nomeMunicipio;
+      String nomePosto;
+      String cnpj;
+      String rua;
+      String numeroRua;
+      String complemento;
+      String bairro;
+      String cep;
+      String produto;
+      String valorVenda;
+      String medida;
+      String bandeira;
       while ((line = br.readLine()) != null) {
-        String[] lines = line.split(";");
-        String regiao;
-        String estado;
-        String nomeMunicipio;
-        String nomePosto;
-        String cnpj;
-        String rua;
-        String numeroRua;
-        String complemento;
-        String bairro;
-        String cep;
-        String produto;
-        String valorVenda;
-        String valorCompra;
-        String medida;
-        String bandeira;
-        while ((line = br.readLine()) != null) {
-          String[] linhas = line.split(";");
-          regiao = linhas[0];
-          estado = linhas[1];
-          nomeMunicipio = linhas[2];
-          nomePosto = linhas[3];
-          cnpj = linhas[4];
-          rua = linhas[5];
-          numeroRua = linhas[6];
-          complemento = linhas[7];
-          bairro = linhas[8];
-          cep = linhas[9];
-          produto = linhas[10];
-          valorVenda = linhas[11];
-          valorCompra = linhas[12];
-          medida = linhas[13];
-          bandeira = linhas[14];
+        String[] linhas = line.split(";");
+        regiao = linhas[0];
+        estado = linhas[1];
+        nomeMunicipio = linhas[2];
+        nomePosto = linhas[3];
+        cnpj = linhas[4];
+        rua = linhas[5];
+        numeroRua = linhas[6];
+        complemento = linhas[7];
+        bairro = linhas[8];
+        cep = linhas[9];
+        produto = linhas[10];
+        valorVenda = linhas[11];
+        medida = linhas[12];
+        bandeira = linhas[13];
 
-          Revenda revenda = new Revenda(regiao, estado, nomeMunicipio, nomePosto, cnpj, rua,
-              numeroRua, complemento, bairro, cep, produto, valorVenda,
-              valorCompra, medida, bandeira);
-          posto.cadastraPosto(revenda);
-        }
+        Revenda revenda = new Revenda(regiao, estado, nomeMunicipio, nomePosto, cnpj, rua,
+            numeroRua, complemento, bairro, cep, produto, valorVenda, medida, bandeira);
+        posto.cadastraPosto(revenda);
       }
     } catch (FileNotFoundException e) {
       System.out.println(e);
