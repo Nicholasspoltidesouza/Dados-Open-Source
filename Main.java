@@ -3,6 +3,5 @@ public class Main {
     ACMEPostos app = new ACMEPostos();
     app.inicializa();
     app.executa();
-  }
-  
+  } 
 }
