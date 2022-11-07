@@ -51,10 +51,12 @@ public class ACMEPostos {
           case 4:
             classificaOrdem();
             break;
-          /*case 5:
-            salvaArquivo();
-            break;*/
-           
+          /*
+           * case 5:
+           * salvaArquivo();
+           * break;
+           */
+
           default:
             System.out.println("Opcao invalida");
             break;
@@ -104,7 +106,9 @@ public class ACMEPostos {
     in.nextLine();
     String ordem = in.nextLine();
     if (ordem.equals("crescente")) {
-      System.out.println(posto.ordenaPostosCrescente());
+      System.out.println(posto.ordenaPostosCrescente() + "\n");
+    } else if (ordem.equals("decrescente")) {
+      System.out.println(posto.ordenaPostosDecrescente() + "\n");
     }
   }
 
