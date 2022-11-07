@@ -5,7 +5,7 @@ public class Revenda {
   private String nomePosto;
   private String cnpj;
   private String rua;
-  private int numeroDaRua;
+  private String numeroDaRua;
   private String complemento;
   private String bairro;
   private String cep;
@@ -16,8 +16,9 @@ public class Revenda {
   private String bandeira;
 
   public Revenda(String regiao, String estado, String nomeMunicipio, String nomePosto, String cnpj, String rua,
-      String numeroRua, String complemento, String bairro, String cep, String produto, String valorVenda,
-      String valorCompra, String medida, String bandeira) {
+      String numeroDaRua, String complemento, String bairro, String cep, String produto, String valorVenda,
+      String medida,
+      String bandeira) {
     this.regiao = regiao;
     this.estado = estado;
     this.nomeMunicipio = nomeMunicipio;
@@ -29,7 +30,6 @@ public class Revenda {
     this.bairro = bairro;
     this.cep = cep;
     this.produto = produto;
-    this.valorCompra = valorCompra;
     this.valorVenda = valorVenda;
     this.medida = medida;
     this.bandeira = bandeira;
@@ -59,7 +59,7 @@ public class Revenda {
     return rua;
   }
 
-  public int getNumeroDaRua() {
+  public String getNumeroDaRua() {
     return numeroDaRua;
   }
 
@@ -97,10 +97,12 @@ public class Revenda {
 
   @Override
   public String toString() {
-    return "Revenda [regiao=" + regiao + ", estado=" + estado + ", nomeMunicipio=" + nomeMunicipio + ", nomePosto="
-        + nomePosto + ", cnpj=" + cnpj + ", rua=" + rua + ", numeroDaRua=" + numeroDaRua + ", complemento="
-        + complemento + ", bairro=" + bairro + ", cep=" + cep + ", produto=" + produto + ", valorCompra=" + valorCompra
-        + ", valorVenda=" + valorVenda + ", medida=" + medida + ", bandeira=" + bandeira + "]";
+    return "Revenda [regiao = " + regiao + ", estado = " + estado + ", nomeMunicipio = " + nomeMunicipio
+        + ", nomePosto = "
+        + nomePosto + ", cnpj = " + cnpj + ", rua = " + rua + ", numeroDaRua = " + numeroDaRua + ", complemento = "
+        + complemento + ", bairro = " + bairro + ", cep = " + cep + ", produto = " + produto + ", valorCompra = "
+        + valorCompra
+        + ", valorVenda = " + valorVenda + ", medida = " + medida + ", bandeira = " + bandeira + "]\n";
   }
-  
+
 }
