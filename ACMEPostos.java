@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class ACMEPostos {
 
   private Postos posto;
+  private ComparaNomePostos compara;
   private Scanner in;
 
   public void inicializa() {
@@ -47,15 +48,13 @@ public class ACMEPostos {
           case 3:
             listaRevendas();
             break;
-          /*
-           * case 4:
-           * classificaOrdem();
-           * break;
-           * case 5:
-           * salvaArquivo();
-           * break;
-           */
-
+          case 4:
+            classificaOrdem();
+            break;
+          /*case 5:
+            salvaArquivo();
+            break;*/
+           
           default:
             System.out.println("Opcao invalida");
             break;
@@ -73,11 +72,11 @@ public class ACMEPostos {
       System.out.println("Informe o nome do posto:");
       in.nextLine();
       String nome = in.nextLine();
-      Revenda revenda = posto.pesquisaRevenda(nome);
+      ArrayList<Revenda> revenda = posto.mostraPostos(nome);
       if (revenda == null) {
         System.out.println("Nenhum posto foi localizado com esse nome");
       } else {
-        System.out.println(revenda.toString());
+        System.out.println(revenda.toString() + "\n");
       }
     } catch (InputMismatchException ex) {
       in.nextLine();
@@ -87,7 +86,7 @@ public class ACMEPostos {
 
   private void listaRevendas() {
     try {
-      System.out.println("Lista de postos:");
+      System.out.println("Lista de postos:" + "\n");
       ArrayList<Revenda> revenda = posto.listaDados();
       for (Revenda revendas : revenda) {
         System.out.println(revendas.toString());
@@ -100,8 +99,17 @@ public class ACMEPostos {
     }
   }
 
+  public void classificaOrdem() {
+    System.out.println("Ordem crescente ou decrescente?");
+    in.nextLine();
+    String ordem = in.nextLine();
+    if (ordem.equals("crescente")) {
+      System.out.println(posto.ordenaPostosCrescente());
+    }
+  }
+
   public void cadastraArquivo() {
-    System.out.println("Informe o diiretorio do arquivo:");
+    System.out.println("Informe o diretorio do arquivo:");
     in.nextLine();
     String nomeArquivo = in.nextLine();
     leArquivo(nomeArquivo);
@@ -111,7 +119,7 @@ public class ACMEPostos {
     Path path = Paths.get(nomeArquivo);
     try {
       BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset());
-      String line = " ";
+      String line = null;
       String regiao;
       String estado;
       String nomeMunicipio;

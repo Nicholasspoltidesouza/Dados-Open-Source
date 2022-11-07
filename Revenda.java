@@ -97,12 +97,11 @@ public class Revenda {
 
   @Override
   public String toString() {
-    return "Revenda [regiao = " + regiao + ", estado = " + estado + ", nomeMunicipio = " + nomeMunicipio
-        + ", nomePosto = "
-        + nomePosto + ", cnpj = " + cnpj + ", rua = " + rua + ", numeroDaRua = " + numeroDaRua + ", complemento = "
-        + complemento + ", bairro = " + bairro + ", cep = " + cep + ", produto = " + produto + ", valorCompra = "
-        + valorCompra
-        + ", valorVenda = " + valorVenda + ", medida = " + medida + ", bandeira = " + bandeira + "]\n";
+    return "Revenda [Região = " + regiao + ", Estado = " + estado + ", Municipio = " + nomeMunicipio
+        + ", Posto = "
+        + nomePosto + ", CNPJ = " + cnpj + ", Rua = " + rua + ", Numero Da Rua = " + numeroDaRua + ", Complemento = "
+        + complemento + ", Bairro = " + bairro + ", CEP = " + cep + ", Produto = " + produto
+        + ", Valor De Venda = " + valorVenda + ", Medida = " + medida + ", Bandeira = " + bandeira + "]" + "\n";
   }
 
 }
