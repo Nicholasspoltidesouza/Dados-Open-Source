@@ -11,7 +11,6 @@ import java.nio.file.FileSystemAlreadyExistsException;
 public class Postos {
 
   private ArrayList<Revenda> revendas;
-  private ComparaNomePostos compara;
 
   public Postos() {
     revendas = new ArrayList<>();
@@ -44,6 +43,11 @@ public class Postos {
 
   public ArrayList<Revenda> ordenaPostosCrescente() {
     revendas.sort(new ComparaNomePostos());
+    return revendas;
+  }
+
+  public ArrayList<Revenda> ordenaPostosDecrescente() {
+    revendas.sort(new ComparaNomePostos().reversed());
     return revendas;
   }
 }
