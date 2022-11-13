@@ -29,8 +29,8 @@ public class Postos {
   public ArrayList<Revenda> mostraPostos(String nomePosto) {
     ArrayList<Revenda> pesquisaParteNome;
     pesquisaParteNome = new ArrayList<Revenda>();
-    for (int i = 0; i < revendas.size(); i++) {
-      Revenda revenda = revendas.get(i);
+    for (Revenda revenda : revendas) {
+      revenda.getNomePosto();
       if (revenda.getNomePosto().contains(nomePosto)) {
         pesquisaParteNome.add(revenda);
       }
