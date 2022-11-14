@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,7 +15,6 @@ import java.util.Scanner;
 public class ACMEPostos {
 
   private Postos posto;
-  private ComparaNomePostos compara;
   private Scanner in;
 
   public void inicializa() {
@@ -51,11 +52,9 @@ public class ACMEPostos {
           case 4:
             classificaOrdem();
             break;
-          /*
-           * case 5:
-           * salvaArquivo();
-           * break;
-           */
+          case 5:
+            salvaArquivo();
+            break;
 
           default:
             System.out.println("Opcao invalida");
@@ -71,6 +70,7 @@ public class ACMEPostos {
 
   private void pesquisaNome() {
     try {
+      posto.limpaDados();
       System.out.println("Informe o nome do posto:");
       in.nextLine();
       String nome = in.nextLine();
@@ -88,6 +88,8 @@ public class ACMEPostos {
 
   private void listaRevendas() {
     try {
+      posto.limpaDados();
+      posto.salvaLista();
       System.out.println("Lista de postos:" + "\n");
       ArrayList<Revenda> revenda = posto.listaDados();
       for (Revenda revendas : revenda) {
@@ -102,6 +104,7 @@ public class ACMEPostos {
   }
 
   public void classificaOrdem() {
+    posto.limpaDados();
     System.out.println("Ordem crescente ou decrescente?");
     in.nextLine();
     String ordem = in.nextLine();
@@ -163,6 +166,18 @@ public class ACMEPostos {
       System.out.println(e);
     } catch (IOException e) {
       System.out.println(e);
+    }
+  }
+
+  public void salvaArquivo() {
+    try {
+      System.out.println("Informe o nome do arquivo em que os dados serao salvos:");
+      in.nextLine();
+      String nomeArquivo = in.nextLine();
+      posto.salvaDadosArquivo(nomeArquivo);
+    } catch(InputMismatchException e){
+      in.nextLine();
+      System.err.println("Erro: entrada de dados incorreta.");
     }
   }
 }
