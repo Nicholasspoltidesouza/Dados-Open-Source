@@ -65,7 +65,7 @@ public class Postos {
 
   public void limpaDados() {
     dados.clear();
-}
+  }
 
 public boolean salvaDadosArquivo(String nomeArquivo) {
   String line = " ";
@@ -83,5 +83,5 @@ public boolean salvaDadosArquivo(String nomeArquivo) {
     return false;
   }
   return true;
-}
+  }
 }
